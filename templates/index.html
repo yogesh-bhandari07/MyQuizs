@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MyQuiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../imgs/webfav.png">
+</head>
+
+<body>
+    <div class="container-fluid p-0 ">
+        <div class="header">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h1 class="mt-4">Welcome To My Quiz</h1>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <a class="navbar-brand" href="#">
+                            <img src="../imgs/weblogo.png" width="30" height="30" alt="" loading="lazy">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                              </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-link">
+                                    <a class="btn btn-light" role="button" data-toggle="modal" data-target="#registermodal">
+                                    Registrations
+                                   </a>
+                                </li>
+                                <li class="nav-link">
+                                    <a role="button" class="btn btn-light" data-toggle="modal" data-target="#login">
+                                       Login
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12 cont_title">
+                    <h3 class="text-center">Let's Study</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-6" id="content_left">
+                    <h1>bnm,./ ";lkjhgjkl;';lkjhj"
+                    </h1>
+                </div>
+                <div class="col-sm-6" id="content_right">
+                    <h1>cxxdfghjkloiuytdsrtdfyu</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Registration form -->
+    <div class="modal fade bg-dark" id="registermodal" tabindex="-1" aria-labelledby="#registermodal" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content  rounded" style="border: 3px solid #EEE">
+                <div class="modal-header bg-dark">
+
+                    <h5>Candidate Registration</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body bg-dark">
+
+                    <div class="row mt-3">
+
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <form action="../code/regitration.php" method="POST" enctype="multipart/form-data">
+
+                                <center>
+                                    <img id="output_img" src="../imgs/user.jpg" style="border: 5px solid #EEE;" width="150" height="150" class=" rounded-circle" alt=""><br>
+                                    <input class="btn btn-info" id="student_profile" name="student_profile" type="file" accept="image/*" onchange="preview_image(event)">
+                                </center>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="register_student_name">Name</label>
+                                        <input type="text" id="register_student_name" name="register_student_name" class="form-control" placeholder="Enter Your Name" required>
+                                        <label for="register_student_email">Email ID</label>
+                                        <input type="email" id="register_student_email" name="register_student_email" class="form-control" placeholder="Example@gmail.com" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="register_student_dob">D.O.B</label>
+                                        <input type="date" id="register_student_dob" placeholder="Enter Your D.O.B" name="register_student_dob" class="form-control" required>
+                                        <label for="register_student_number">Phone Number</label>
+                                        <input type="text" id="register_student_number" maxlength="10" placeholder="Enter Your Number" name="register_student_number" class="form-control" required>
+                                        <button class="btn btn-success float-left mt-3" type="submit">Submit</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login modal -->
+    <div class="modal fade bg-dark" id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content  " style="border: 3px solid #EEE">
+                <div class="modal-header bg-dark">
+
+                    <h5>Student Login</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+     </button>
+                </div>
+                <div class="modal-body bg-dark">
+                    <div class="row mt-3">
+
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <form action="../code/login.php" method="POST">
+
+                                <label for="username">Username</label>
+                                <input type="text" placeholder="Username" id="username" name="username" class="form-control" required>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" placeholder="Password" name="password" class="form-control mb-3" required>
+                                <center><a role='button' data-toggle="modal" data-target="#changepass">Forget Password</a></center>
+                                <button class="btn btn-success float-right mt-2" type="submit">Login</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/index.js" async defer></script>
+
+</body>
+
+</html>

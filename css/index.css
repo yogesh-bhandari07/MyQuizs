@@ -1,0 +1,81 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #282828;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+ ::-webkit-scrollbar-thumb:window-inactive {
+    background: #282828;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+.header {
+    background-image: url('../imgs/headerimg.jpg');
+    background-size: contain;
+    font-family: 'Hanalei Fill', cursive;
+    max-height: 150px;
+    min-height: 150px;
+    min-width: 100vw;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.menu {
+    background: #282828;
+    max-height: fit-content;
+    min-height: fit-content;
+    max-width: 100vw;
+    min-width: 100vw;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.navbar {
+    background-color: #282828;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.content {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #282828;
+    max-height: fit-content;
+    min-height: fit-content;
+    max-width: 100vw;
+    min-width: 100vw;
+    box-shadow: inset 0px 2px 5px 1px #0d010d;
+}
+
+#content_left {
+    border-right: 5px dotted #fff;
+}
+
+.cont_title {
+    box-shadow: inset 0px 2px 3px 3px #0d010d;
+    min-height: 40px;
+    min-width: 100vw;
+    background: #282828;
+    color: #fff;
+}
