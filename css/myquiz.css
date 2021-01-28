@@ -51,10 +51,7 @@
 }
 
 .content {
-    padding-left: 10px;
-    padding-right: 10px;
     background: #282828;
     min-height: 100vh;
     width: 100%;
-    /* box-shadow: inset 0px 2px 5px 1px #0d010d; */
 }

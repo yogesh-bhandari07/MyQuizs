@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #FFF;
+    /* background: #282828; */
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+ ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #282828;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+ ::-webkit-scrollbar-thumb:window-inactive {
+    background: #282828;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+.header {
+    background-image: url('../imgs/logo2.jpg');
+    background-size: contain;
+    font-family: 'Hanalei Fill', cursive;
+    max-height: 150px;
+    min-height: 150px;
+    width: 100%;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.menu {
+    background: #282828;
+    height: fit-content;
+    width: 100%;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.navbar {
+    background-color: #282828;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.content {
+    background: #282828;
+    min-height: 100vh;
+}
+
+.sidenav {
+    box-shadow: 0px 2px 5px 1px #0d010d;
+    height: 100vh;
+    z-index: 1;
+    background-color: #282828;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFF;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: yellowgreen;
+    text-decoration: none;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.forum {
+    width: 80%;
+}
+
+
+/* * {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+
+ ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+
+
+ ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #282828;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+ ::-webkit-scrollbar-thumb:window-inactive {
+    background: #282828;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+.header {
+    background-image: url('../imgs/logo2.jpg');
+    background-size: contain;
+    font-family: 'Hanalei Fill', cursive;
+    max-height: 150px;
+    min-height: 150px;
+    min-width: 100vw;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.menu {
+    background: #282828;
+    max-height: fit-content;
+    min-height: fit-content;
+    max-width: 100vw;
+    min-width: 100vw;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.navbar {
+    background-color: #282828;
+    box-shadow: inset 0px 0px 5px 1px #0d010d;
+}
+
+.content {
+    background: #282828;
+  
+    min-height: 100vh;
+    max-width: 100vw;
+    min-width: 100vw;
+}
+
+
+
+
+.sidenav {
+    box-shadow: 0px 2px 5px 1px #0d010d;
+    height: 100vh;
+    width: 260px;
+  
+    z-index: 1;
+  
+    background-color: #282828;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFF;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: yellowgreen;
+    text-decoration: none;
+}
+
+.main {
+    margin-left: 160px;
+  
+    font-size: 28px;
+  
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+} */

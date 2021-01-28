@@ -5,15 +5,16 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $db= "php";
+        $db= "quiz";
         $conn = mysqli_connect($servername, $username, $password,$db);
         if (!$conn) {
           die("Connection failed: " . mysqli_connect_error());
         }
         if (mysqli_query($conn, $sql)) {
-                    echo "Command apply successfully";
+                    
+                    return;
                   } else {
-                    echo "Error creating table: " . mysqli_error($conn);
+                    die("Error creating table: " . mysqli_error($conn));
                   }
     }
 }

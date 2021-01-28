@@ -30,7 +30,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 .header {
     background-image: url('../imgs/logo2.jpg');
-    background-size: cover;
+    background-size: contain;
     font-family: 'Hanalei Fill', cursive;
     max-height: 150px;
     min-height: 150px;
@@ -51,10 +51,41 @@
 }
 
 .content {
-    padding-left: 10px;
-    padding-right: 10px;
     background: #282828;
+    height: 100%;
+}
+
+.sidenav {
+    box-shadow: 0px 2px 5px 1px #0d010d;
     min-height: 100vh;
-    width: 100%;
-    /* box-shadow: inset 0px 2px 5px 1px #0d010d; */
+    z-index: 1;
+    background-color: #282828;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFF;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: yellowgreen;
+    text-decoration: none;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.forum {
+    width: 80%;
 }
