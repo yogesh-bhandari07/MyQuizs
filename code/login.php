@@ -87,12 +87,13 @@ else{
                         $_SESSION['enrollment']=$row['enrollment'];
                         $_SESSION['userimg']=$row['stdimg'];
                         $_SESSION['class']=$row['stdclass'];
+                        $_SESSION['stdemail']=$row['stdemail'];
                     }
                     } else {
                     echo "0 results";
                     }
                     $con->close();
-                    echo('<script>alert("Logged In");window.location.href="../templates/index.php"</script>');
+                    echo('<script>alert("Logged In As Student");window.location.href="../templates/index.php"</script>');
                 }
     
         }

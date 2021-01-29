@@ -148,7 +148,7 @@
                             
                             while($row = $result->fetch_assoc()) {
 
-                                echo'<option value="'.$row["testname"].' '.$row['subjectname'].'" class="text-dark">'.$row["subjectname"].' ('.$row['testname'].') </option>';
+                                echo'<option value="'.$row["testname"].' '.$row['subjectname'].'" class="text-dark">'.str_replace("_"," ",$row['testname']).'</option>';
 
                             }
                             

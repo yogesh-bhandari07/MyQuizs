@@ -193,7 +193,7 @@ function time_elapsed_string($datetime, $full = false) {
                                                 <h4 class="card-title text-warning">Quiz <small class="text-danger">new </small></h4>
 
                                                 <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
-                                                <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
+                                                <h5 class="card-title">Subject :- '.$row['testname'].'</h5>
                                                 <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
                                                 <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
                                                 <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>

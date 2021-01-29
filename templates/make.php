@@ -20,9 +20,10 @@
     session_start();
     $qno=$_SESSION['qno'];
     $qno=$qno;
-    echo("nmm,,".$qno);
-        echo('<input  value="'.$qno.'" id="qno">');
+    
+        echo('<input type="hidden" value="'.$qno.'" id="qno">');
         
+
         ?>
         <!-- <form> -->
         <div class="content p-4">

@@ -37,17 +37,7 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" href="#" id="quizedrop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Quizs
-                              </a>
-                                    <div class="dropdown-menu" aria-labelledby="quizedrop">
-                                        <a class="dropdown-item" href="#">Latest Quizs</a>
-                                        <a class="dropdown-item" href="#">Old Quizs</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Expire Soon</a>
-                                    </div>
-                                </li>
+                              
 
                                 <?php
                                 session_start();
@@ -193,7 +183,43 @@ function time_elapsed_string($datetime, $full = false) {
                                     if ($con->connect_error) {
                                         die("Connection failed: " . $con->connect_error);
                                     }
+                                    if(isset($_SESSION['class'])){
+                                        $class=$_SESSION['class'];
+                                        
+                                        // $sql = "SELECT * FROM runningtest";
+                                        $sql = "SELECT * FROM runningtest WHERE testclass='$class'";
+                                        $result = $con->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            
+                                            while($row = $result->fetch_assoc()) {
+                                            $timedate=$row['testupdate'];
+                                            $time=time_elapsed_string($timedate, true);
+                                        
+                                            echo '
+                                            <form action="../code/test.php" method="post">
+                                            <div class="card mb-4">
+                                                <div class="card-body bg-dark">
+                                                    <h4 class="card-title text-warning">Quiz <small class="text-danger">new </small></h4>
+
+                                                    <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
+                                                    <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
+                                                    <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
+                                                    <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
+                                                    </div>
+                                                    <input type="hidden" name="testname" value="'.$row["testname"].'">
+                                                    </div>
+                                                    </form>
+                                                    ';
+                                            }
+                                                // <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>
+                                        
                                     
+                                    }
+                                    }
+                                    
+                                    else {
+                                    // echo "<center><h1>NO TEST FOUND !!!</h1></center>";
+
                                     $sql = "SELECT * FROM runningtest";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
@@ -212,17 +238,22 @@ function time_elapsed_string($datetime, $full = false) {
                                                 <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
                                                 <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
                                                 <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
-                                                <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>
-                                            </div>
-                                            <input type="hidden" name="testname" value="'.$row["testname"].'">
-                                        </div>
-                                    </form>
-                                        ';
-                                        
+                                                </div>
+                                                <input type="hidden" name="testname" value="'.$row["testname"].'">
+                                                </div>
+                                                </form>
+                                                ';
+                                        }
+                                            // <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>
                                     
+                                
+                                }
+
+
+
                                     }
-                                    } else {
-                                    echo "<center><h1>NO TEST FOUND !!!</h1></center>";
+                                    if($result->num_rows == 0){
+                                        echo('<h1>No Test Uploaded Yet</h1>');
                                     }
                                     $con->close();
                                     

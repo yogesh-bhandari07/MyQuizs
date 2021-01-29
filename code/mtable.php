@@ -5,7 +5,7 @@ $subject_name=ucfirst($subject_name);
 $teacher_name=$_POST["tename"];
 $teacher_name=ucfirst($teacher_name);
 $test_name=$_POST["tname"];
-
+$subject_name=str_replace(" ","_",$subject_name);
 $test_name=str_replace(" ","_",$test_name);
 $test_name=str_replace("!","_",$test_name);
 $test_name=str_replace("~","_",$test_name);
@@ -33,12 +33,15 @@ $test_name=str_replace(".","_",$test_name);
 $test_name=str_replace("|","_",$test_name);
 $test_name=str_replace("'\'","_",$test_name);
 $test_name=str_replace("{","_",$test_name);
-  $test_name=str_replace("}","_",$test_name);
-  $test_name=str_replace("[","_",$test_name);
-  $test_name=str_replace("]","_",$test_name);
-  $test_name=str_replace(";","_",$test_name);
-  
+$test_name=str_replace("}","_",$test_name);
+$test_name=str_replace("[","_",$test_name);
+$test_name=str_replace("]","_",$test_name);
+$test_name=str_replace(";","_",$test_name);
 
+
+// this is new
+$test_name=$subject_name.'_'.$test_name;
+// 
 $test_name=ucfirst($test_name);
 $total_marks=$_POST["tmarks"];
 $test_class=$_POST["tclass"];

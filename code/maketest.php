@@ -23,4 +23,8 @@ $m->sql_comm($sql);
 $qno--;
 echo($qno);
 }
+else{
+    echo("Please Enter Currect Right Answer or Options");
+
+}
 ?>

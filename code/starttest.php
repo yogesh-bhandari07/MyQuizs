@@ -12,8 +12,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/webfav.png">
 </head>
 
-<body>
+<body onload="">
+
+
+
+
     <div class="card\r">
+
+
+
         <?php
         // require 'database.php';
         class db_mysql{
@@ -51,12 +58,56 @@
         $sql="CREATE TABLE $tablename(
             qno INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         question VARCHAR(150) NOT NULL,
-        choice VARCHAR(150) NOT NULL
+        choice VARCHAR(150) NOT NULL,
+        currect VARCHAR(150) NOT NULL
         )";
         $runquery=new db_mysql();
         $runquery->sql_comm($sql);
         $testname=strtok($testname, " ");
         echo($testname);
+
+
+
+// up
+$conn =  new mysqli('localhost', 'root', '','quiz');
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM runningtest WHERE testname='$testname'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+      $_SESSION['totalmarks']=$row['totalmarks'];
+      
+      echo'
+      <input type="hidden" value="'.$row['testtime'].'" name="testtime" id="testtime">
+      <div>Time Left <span id="time">'.$row['testtime'].'</span> minutes!</div>'
+      ;
+  }
+} else {
+  echo "0 results";
+}
+
+$conn->close();
+// down
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         echo'</div>';
         echo'<div class="card-body ">';
             $con = new mysqli('localhost', 'root', '','quiz');
@@ -75,9 +126,11 @@
                 while($row = $result->fetch_assoc()) {
                 echo '
             <h6 class="card-title"> Q - '.$row['qno'].') '.$row['question'].'?</h6>
-            <input type="hidden" name="question_'.$qnos.'" id="question_'.$qnos.'" value="'.$row['question'].'" >
+            <input type="hidden" name="question_'.$row['qno'].'" id="question_'.$qnos.'" value="'.$row['question'].'"  >
             <input type="hidden" name="questionnos" id="questionnos" value="'.$qnos.'" >
-            <input type="radio" id="op_'.$row['qno'].'" name="op_'.$row['qno'].'" value="'.$row['option1'].'" >
+            <input type="hidden" name="testname" id="testname" value="'.$testname.'" >
+            <input type="hidden" name="tablename" id="tablename" value="'.$tablename.'" >
+            <input type="radio" id="op_'.$row['qno'].'" name="op_'.$row['qno'].'" value="'.$row['option1'].'" checked="checked">
             <label for="'.$row['qno'].'">'.$row['option1'].'</label><br>
 
             <input type="radio" id="op_'.$row['qno'].'" name="op_'.$row['qno'].'" value="'.$row['option2'].'">
@@ -92,7 +145,7 @@
                 echo('<div class="dropdown-divider"></div>');
             
             }
-            echo'<center><button type="submit" class="btn btn-success">Submit</button></center>
+            echo'<center><button type="submit" class="btn btn-success" id="submitbtn">Submit</button></center>
             </form>';
             } else {
             echo "<center><h1>NO TEST FOUND !!!</h1></center>";
@@ -102,7 +155,7 @@
 ?>
     </div>
 
-   
+
 
     </div>
 

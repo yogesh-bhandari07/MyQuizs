@@ -1,6 +1,6 @@
 function data_sent() {
     var qno = document.getElementById('qno').value;
-    alert(qno);
+    // alert(qno);
     if (qno == 1) {
 
         var question = document.getElementById('question').value;
@@ -26,7 +26,7 @@ function data_sent() {
                 qno: qno
             },
             success: function(x) {
-                alert(x);
+                // alert(x);
                 alert('Test Created !!!');
                 window.location.href = '../templates/admin.php';
             }
@@ -56,7 +56,7 @@ function data_sent() {
                 qno: qno
             },
             success: function(x) {
-                alert(x);
+                // alert(x);
                 document.getElementById('question').value = "";
                 document.getElementById('ranswer').value = "";
                 document.getElementById('option_1').value = "";
@@ -89,7 +89,7 @@ function data_sent() {
                 qno: qno
             },
             success: function(x) {
-                alert(x);
+                // alert(x);
                 document.getElementById('question').value = "";
                 document.getElementById('ranswer').value = "";
                 document.getElementById('option_1').value = "";

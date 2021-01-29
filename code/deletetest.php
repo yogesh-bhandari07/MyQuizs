@@ -7,6 +7,9 @@ $test=$_POST['test_name'];
 $sqll="DELETE FROM runningtest WHERE testname='$test'";
 $mm=new db_mysql();
 $mm->sql_comm($sqll);
+$sql="DROP TABLE $test";
+$mmm=new db_mysql();
+$mmm->sql_comm($sql);
 echo("Deleted");
 
 
