@@ -35,7 +35,9 @@ if($isValidChecksum == "TRUE") {
 			$runquery->sql_comm($sql);
 			session_start();
 			$_SESSION['oid']=$order_id;
-			echo"<script>alert('Your Ragistration is Successfully Done');window.location.href='../../templates/index.php'</script>";
+			
+
+			echo"<script>alert('Your Ragistration is Successfully Done');window.window.open('../../code/regitration.php', '_blank');window.location.href='../../templates/index.php'</script>";
 
 			
 
@@ -46,6 +48,7 @@ if($isValidChecksum == "TRUE") {
 			$sql="DELETE FROM users WHERE enrollment=$enrollment";
 			$runquery=new db_mysql();
 			$runquery->sql_comm($sql);
+			echo"<script>alert('Registration Failed');window.location.href='../../templates/index.php'</script>";
 	}
 
 	if (isset($_POST) && count($_POST)>0 )

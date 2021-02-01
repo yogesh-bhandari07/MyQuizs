@@ -78,59 +78,103 @@ $html='<style>@page {
     margin-bottom: 2.54cm;
     margin-left: 3.175cm;
     margin-right: 3.175cm;
+
+    
+    
+    
+    
     border:2px solid #000;
    }</style>';
 
 
+session_start();
+$orid=$_SESSION['oid'];
+   $con = new mysqli('localhost', 'root', '','quiz');
+// Check connection
+    if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+    }
 
-// Create an instance of the class:
-$mpdf = new \Mpdf\Mpdf([
-    'default_font_size' => 14,
-	'default_font' => 'dejavusans'
-]);
-// Write some HTML code:
-// $mpdf=new mPDF('','A4');
-$mpdf->WriteHTML($html);
-$mpdf->showWatermarkText="True";
-$mpdf->SetWatermarkText("MMIT",0.3);
+    $sql = "SELECT * FROM users WHERE txtorderid='$orid'";
+    $result = $con->query($sql);
+    $data=array();
+    // Create an instance of the class:
+    $mpdf = new \Mpdf\Mpdf([
+        'default_font_size' => 14,
+        'default_font' => 'dejavusans'
+    ]);
+    // Write some HTML code:
+    // $mpdf=new mPDF('','A4');
+    $mpdf->WriteHTML($html);
+    $mpdf->showWatermarkText="True";
+    $mpdf->SetWatermarkText("MMIT",0.2);
+    
+    
+    $mpdf->WriteHTML('<h1>Registration Payment Slip</h1>');
+    $mpdf->WriteHTML('<hr>');
+    
+    $mpdf->WriteHTML('<br>');
+    $mpdf->WriteHTML('<br>');
+
+    if ($result->num_rows > 0) {
+                    
+        while($row = $result->fetch_assoc()) {
+
+            $txtid=$row['txtorderid'];
+            $respmsg=$row['respmsg'];
+            $stdname=$row['stdname'];
+            $stdfname=$row['stdfname'];
+            $stdclass=$row['stdclass'];
+            $enrollment=$row['enrollment'];
+            $rsid=$row['rsid'];
+            $amount=$row['amount'];
+            $txndate=$row['txndate'];
 
 
-$mpdf->WriteHTML('<h1>Registration Payment Slip</h1>');
-$mpdf->WriteHTML('<hr>');
-$mpdf->WriteHTML('<br>');
-$mpdf->WriteHTML('<br>');
+        }
+
+
+
+    }
+
+
 
 
 $mpdf->WriteCell(90,20,"Transaction ID :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$txtid",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Status :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$respmsg",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Student Name :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$stdname",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Father Name :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$stdfname",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Class :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$stdclass",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Roll Number :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$enrollment",0,1,'C');
 
 $mpdf->WriteCell(90,20,"Registration Number :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$rsid",0,1,'C');
 
 
 $mpdf->WriteCell(90,20,"Amount :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$amount",0,1,'C');
 
 
 $mpdf->WriteCell(90,20,"Transaction Date :- ",0,0,'L');
-$mpdf->WriteCell(90,20,"Hello WOrld",0,1,'C');
+$mpdf->WriteCell(90,20,"$txndate",0,1,'C');
 
 
 $mpdf->SetDisplayMode('fullpage');
-$mpdf->Output();
+$stdname=strval($stdname);
+$pdfname=$stdname.'.pdf';
+$mpdf->Output("$pdfname",'I');
+
+  
+
 ?>

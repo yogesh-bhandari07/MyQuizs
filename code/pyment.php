@@ -16,6 +16,19 @@
 
 <?php
 require 'database.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
 $uploadir="C:/xampp/htdocs/quizs/imgs/userpic/";
 $uploadfile=$uploadir.basename($_FILES["file"]["name"]);
 $stdname=$_POST["register_student_name"];
@@ -32,7 +45,64 @@ $password=$_POST['register_student_password'];
 $class=$_POST['register_student_class'];
 $upic=$_FILES["file"]["name"];
 $oid="ORDS".rand(10000,99999999);
-$sql="insert into users(enrollment, stdname, stdfname, stdmob, stdemail, stddob, stdgeder, stdimg, password, stdclass,txtorderid,amount,respmsg,txndate)VALUES('$enrollment','$stdname','$stdfname','$stdmob','$stdemail','$stddob','$stdgender','$upic','$password','$class','$oid','','','')";
+
+
+
+$con = new mysqli('localhost', 'root', '','quiz');
+// Check connection
+if ($con->connect_error) {
+die("Connection failed: " . $con->connect_error);
+}
+
+$sqll = "SELECT * FROM users";
+$result = $con->query($sqll);
+$ct=$result->num_rows;
+$ct=strval($ct);
+
+if($result->num_rows==0){
+	$cdt=date('y');
+	$ct='1';
+	$ct='000'.$ct;
+	$rsid="HDPS".$cdt.$class.$ct;
+}
+else if(strlen($ct)==1){
+	$cdt=date('y');
+	$ct=$ct+1;
+	$ct='000'.$ct;
+	$rsid="HDPS".$cdt.$class.$ct;
+}
+else if(strlen($ct)==2){
+	$cdt=date('y');
+	$ct=$ct+1;
+	$ct='00'.$ct;
+	$rsid="HDPS".$cdt.$class.$ct;
+
+}
+else if(strlen($ct)==3){
+	$cdt=date('y');
+	$ct='0'.$ct;
+	$ct=$ct+1;
+	$rsid="HDPS".$cdt.$class.$ct;
+}
+else if(strlen($ct)==4){
+	$cdt=date('y');
+	$ct=$ct;
+	$rsid="HDPS".$cdt.$class.$ct;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+$sql="insert into users(enrollment, stdname, stdfname, stdmob, stdemail, stddob, stdgeder, stdimg, password, stdclass,txtorderid,amount,respmsg,txndate,rsid)VALUES('$enrollment','$stdname','$stdfname','$stdmob','$stdemail','$stddob','$stdgender','$upic','$password','$class','$oid','','','','$rsid')";
 $runquery=new db_mysql();
 $runquery->sql_comm($sql);
 if(move_uploaded_file($_FILES["file"]["tmp_name"],$uploadfile))	{
