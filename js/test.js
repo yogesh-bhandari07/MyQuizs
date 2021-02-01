@@ -8,7 +8,7 @@ function test_delete() {
             test_name: test_name
         },
         success: function(x) {
-            alert(x);
+
             alert('Test Deleted !!!');
             window.location.href = '../templates/runningtest.php';
         }

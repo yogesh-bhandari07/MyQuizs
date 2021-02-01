@@ -35,7 +35,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="../templates/index.php">Home <span class="sr-only">(current)</span></a>
                                 </li>
                               
 
@@ -237,7 +237,7 @@ function time_elapsed_string($datetime, $full = false) {
                                                 <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
                                                 <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
                                                 <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
-                                                <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
+                                                <h6>Upload On :- <small class="mr-auto">'.$row["testupdate"].'</small></h6>
                                                 </div>
                                                 <input type="hidden" name="testname" value="'.$row["testname"].'">
                                                 </div>
@@ -407,7 +407,7 @@ function time_elapsed_string($datetime, $full = false) {
 
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8">
-                            <form action="../code/regitration.php" method="POST" enctype="multipart/form-data">
+                            <form action="../code/pyment.php" method="POST" enctype="multipart/form-data">
 
                                 <center>
                                     <img id="output_img" src="../imgs/user.jpg" style="border: 5px solid #EEE;" width="150" height="150" class=" rounded-circle" alt=""><br>

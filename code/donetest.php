@@ -63,8 +63,6 @@ while($i<=$qnos)
         }
         
         ;
-        // echo('<script>alert("Test Has Been Submited");window.location.href="../templates/index.php"</script>');
-    
         $dt=implode(" ",$dt);
         
         
@@ -74,9 +72,9 @@ while($i<=$qnos)
         $headers = "From:kiratkumar9062@gmail.com";
         
         if (mail($to_email, $subject, $body, $headers)) {
-            echo('<script>alert("Test Has Been Submited");window.location.href="../templates/index.php"</script>');
+            echo("<script>alert('Test Has Been Submited You Got $cr / $total');window.location.href='../templates/index.php'</script>");
         } else {
-            echo('<script>alert("Test Has Been Submited");window.location.href="../templates/index.php"</script>');
+            echo("<script>alert('Test Has Been Submited You Got $cr / $total');window.location.href='../templates/index.php'</script>");
         }
 
         
@@ -86,7 +84,10 @@ while($i<=$qnos)
     $i++;
 
 }
-
-
+$user=$_SESSION['username'];
+$cdate=date("y-m-d");
+$sqllll="INSERT INTO attend(testname,stdname,udate,marks)VALUES('$test_name','$user','$cdate','$cr')";
+$runqueryy=new db_mysql();
+$runqueryy->sql_comm($sqllll);
 
 ?>

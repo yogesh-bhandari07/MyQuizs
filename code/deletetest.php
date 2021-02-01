@@ -10,7 +10,7 @@ $mm->sql_comm($sqll);
 $sql="DROP TABLE $test";
 $mmm=new db_mysql();
 $mmm->sql_comm($sql);
-echo("Deleted");
+
 
 
 

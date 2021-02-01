@@ -20,15 +20,6 @@
                 <h1 class="pt-4">Welcome To Admin Zone</h1>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
         <div class="menu">
 
 
@@ -43,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="../templates/index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
 
                     </ul>
@@ -105,9 +96,9 @@
                 <div class="col-sm-2 p-1">
                     <div class="sidenav">
                         <a href="../templates/admin.php">Admin</a>
-                        <a href="#services">Students</a>
+                        <a href="../code/student.php">Students</a>
 
-                        <a href="#contact">Attend Test</a>
+                        <a href="../code/attend.php">Attend Test</a>
                     </div>
 
 

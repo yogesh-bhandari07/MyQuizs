@@ -103,9 +103,9 @@
                 <div class="col-sm-2 p-1">
                     <div class="sidenav">
 
-                        <a href="#services">Students</a>
+                        <a href="../code/student.php">Students</a>
                         <a href="../templates/runningtest.php">Running Test</a>
-                        <a href="#contact">Attend Test</a>
+                        <a href="../code/attend.php">Attend Test</a>
                     </div>
 
 
