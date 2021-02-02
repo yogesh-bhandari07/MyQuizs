@@ -173,6 +173,7 @@ $mpdf->WriteCell(90,20,"$txndate",0,1,'C');
 $mpdf->SetDisplayMode('fullpage');
 $stdname=strval($stdname);
 $pdfname=$stdname.'.pdf';
+unset($_SESSION['oid']);
 $mpdf->Output("$pdfname",'I');
 
   

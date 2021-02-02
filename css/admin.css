@@ -29,8 +29,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 .header {
-    background-image: url('../imgs/logo2.jpg');
-    background-size: contain;
+        background-image: url('../imgs/logo2.jpg');
+        background-size: cover;
+    background-repeat: no-repeat;
     font-family: 'Hanalei Fill', cursive;
     max-height: 150px;
     min-height: 150px;

@@ -129,72 +129,60 @@
 
 
 
+<!-- up -->
 
+ 
+<!-- down -->
 
+<center><h1 class="text-center">Staff</h1></center>
 
                             <?php
-
-
-function time_elapsed_string($datetime, $full = false) {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'y',
-        'm' => 'm',
-        'w' => 'w',
-        'd' => 'd',
-        'h' => 'h',
-        'i' => 'm',
-        's' => 'sec',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-
-
-
                                     $con = new mysqli('localhost', 'root', '','quiz');
                                     if ($con->connect_error) {
                                         die("Connection failed: " . $con->connect_error);
                                     }
                                     
-                                    $sql = "SELECT * FROM runningtest";
+                                    $sql = "SELECT * FROM staff";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
-                                        
-                                        while($row = $result->fetch_assoc()) {
-                                        $timedate=$row['testupdate'];
-                                        $time=time_elapsed_string($timedate, true);
-                                    
-                                        echo '
-                                        <form action="../code/stdattend.php" method="post">
-                                        <div class="card mb-4">
-                                            <div class="card-body bg-dark">
-                                                <h4 class="card-title text-warning">Quiz <small class="text-danger">new </small></h4>
+echo'
+<table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Staff Name</th>
+      <th scope="col">Staff ID</th>
+      <th scope="col">Father Name</th>
+      <th scope="col">Subject</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Email ID</th>
+      <th scope="col">Gender</th>
 
-                                                <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
-                                                <h5 class="card-title">Subject :- '.$row['testname'].'</h5>
-                                                <input type="hidden" name="testname" value="'.$row["testname"].'">    
-                                                <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
-                                                <h5 class="card-title">Total Marks :-'.$row["totalmarks"].' </h5>
-                                                <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>
-                                            </div>
-                                            
-                                        </div>
-                                    </form>
+                                        
+    </tr>
+  </thead>
+  <tbody>
+
+';
+
+                                        
+
+
+                                        while($row = $result->fetch_assoc()) {                                    
+                                        echo '
+                                        
+    <tr>
+    
+    <td>'.$row['facname'].'</td>
+    <td>'.$row['facrsid'].'</td>
+    <td>'.$row['facfname'].'</td>
+    <td>'.$row['facsub'].'</td>
+    <td>'.$row['facdob'].'</td>
+    <td>'.$row['facmob'].'</td>
+    <td>'.$row['facemail'].'</td>
+    <td>'.$row['facgender'].'</td>
+  </tr>
                                         ';
                                         
                                     
@@ -202,6 +190,8 @@ function time_elapsed_string($datetime, $full = false) {
                                     } else {
                                     echo "<center><h1>NO TEST FOUND !!!</h1></center>";
                                     }
+                                    echo' </tbody>
+                                    </table>';
                                     $con->close();
                                     
                                     
