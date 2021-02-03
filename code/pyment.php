@@ -91,11 +91,18 @@ else if(strlen($ct)==4){
 }
 
 
+$stdname=str_replace(" ","_",$stdname);
 
 
+$filename   = $stdname . "-" . time(); 
+$extension  = pathinfo( $_FILES["file"]["name"], PATHINFO_EXTENSION ); // jpg
+$basename   = $filename . "." . $extension; // 5dab1961e93a7_1571494241.jpg
 
+$source       = $_FILES["file"]["tmp_name"];
+$destination  = "C:/xampp/htdocs/quizs/imgs/userpic/{$basename}";
+$upic=$basename;
 
-
+$stdname=str_replace("_"," ",$stdname);
 
 
 
@@ -105,7 +112,7 @@ else if(strlen($ct)==4){
 $sql="insert into users(enrollment, stdname, stdfname, stdmob, stdemail, stddob, stdgeder, stdimg, password, stdclass,txtorderid,amount,respmsg,txndate,rsid)VALUES('$enrollment','$stdname','$stdfname','$stdmob','$stdemail','$stddob','$stdgender','$upic','$password','$class','$oid','','','','$rsid')";
 $runquery=new db_mysql();
 $runquery->sql_comm($sql);
-if(move_uploaded_file($_FILES["file"]["tmp_name"],$uploadfile))	{
+if(move_uploaded_file($source,$destination))	{
 	
 // uper
 echo '

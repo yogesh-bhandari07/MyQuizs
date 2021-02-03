@@ -96,11 +96,13 @@
                 <div class="col-sm-2 p-1">
                     <div class="sidenav">
                     <a href="../templates/admin.php">Admin</a>
-                        <a href="../code/student.php">Students</a>
+                        <a style="color:yellowgreen;" href="../code/student.php">Students</a>
                         <a href="../templates/runningtest.php">Running Test</a>
                         <a href="../code/attend.php">Attend Test</a>
                         <a href="../templates/addstaff.php">Add Staff</a>
                         <a href="../templates/staff.php">Staff</a>
+                        <a href="../code/astdresult.php">Result</a>    
+                        
                     </div>
 
 
@@ -157,7 +159,7 @@ echo'
       <th scope="col">Class</th>
       <th scope="col">DOB</th>
       <th scope="col">Mobile Number</th>
-      
+
       <th scope="col">Gender</th>
       <th scope="col">Delete</th>
       <th scope="col">Update</th>
@@ -227,7 +229,7 @@ echo'
 function set_data(name,upic,fname,roll,dob,gen,mob,cl,email,rsid){
     
     document.getElementById('register_student_name').value=name;
-    var st1="C:/xampp/htdocs/quizs/imgs/userpic/";
+    var st1="../imgs/userpic/";
     upic=st1.concat(upic);
     document.getElementById('output_img').src=upic;
     document.getElementById('register_student_fname').value=fname;
@@ -351,6 +353,7 @@ function delete_data(rid){
 
 
     <div class="modal fade bg-dark" id="registermodal" tabindex="-1" aria-labelledby="#registermodal" aria-hidden="true">
+
         <div class="modal-dialog modal-lg">
             <div class="modal-content  rounded" style="border: 3px solid #EEE">
                 <div class="modal-header bg-dark">

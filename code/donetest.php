@@ -66,16 +66,13 @@ while($i<=$qnos)
         $dt=implode(" ",$dt);
         
         
-        $to_email = "$stdemail";
-        $subject = "MyQuiz Test";
-        $body = "Hi, This Your Test Has Been Submited Successfully Your Result is $cr and Your Performance is \n $dt";
-        $headers = "From:kiratkumar9062@gmail.com";
         
-        if (mail($to_email, $subject, $body, $headers)) {
+        
+        
             echo("<script>alert('Test Has Been Submited You Got $cr / $total');window.location.href='../templates/index.php'</script>");
-        } else {
-            echo("<script>alert('Test Has Been Submited You Got $cr / $total');window.location.href='../templates/index.php'</script>");
-        }
+        
+        
+        
 
         
     }
@@ -86,7 +83,8 @@ while($i<=$qnos)
 }
 $user=$_SESSION['username'];
 $cdate=date("y-m-d");
-$sqllll="INSERT INTO attend(testname,stdname,udate,marks)VALUES('$test_name','$user','$cdate','$cr')";
+$rrr=$_SESSION['enrollment'];
+$sqllll="INSERT INTO attend(testname,stdname,udate,marks,total,enroll)VALUES('$test_name','$user','$cdate','$cr','$total','$rrr')";
 $runqueryy=new db_mysql();
 $runqueryy->sql_comm($sqllll);
 

@@ -51,7 +51,10 @@
                             else  if(isset($_SESSION['username'])){
                                 echo'
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="../templates/myquiz.php">Quizs</a>
+                                <a class="nav-link" href="../templates/myquiz.php">Quizs</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="../templates/profile.php">My Profile</a>
                                 </li>';
                             }
                             else{
@@ -146,7 +149,7 @@
 
 
                             <?php
-
+require '../code/database.php';
 
 function time_elapsed_string($datetime, $full = false) {
     $now = new DateTime;
@@ -194,22 +197,44 @@ function time_elapsed_string($datetime, $full = false) {
                                             while($row = $result->fetch_assoc()) {
                                             $timedate=$row['testupdate'];
                                             $time=time_elapsed_string($timedate, true);
-                                        
-                                            echo '
-                                            <form action="../code/test.php" method="post">
-                                            <div class="card mb-4">
-                                                <div class="card-body bg-dark">
-                                                    <h4 class="card-title text-warning">Quiz <small class="text-danger">new </small></h4>
 
-                                                    <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
-                                                    <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
-                                                    <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
-                                                    <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
-                                                    </div>
-                                                    <input type="hidden" name="testname" value="'.$row["testname"].'">
-                                                    </div>
-                                                    </form>
-                                                    ';
+                                            $ctt=date('y-m-d');
+                                            $ex=$row['testexpiry'];
+                                            $curdate = strtotime($ctt);
+                                            $mydate = strtotime($ex);
+                                            $tnamee=$row['testname'];
+                                            if($curdate > $mydate)
+                                            {
+                                              
+                                                $sqllll = "DELETE FROM runningtest WHERE testname='$tnamee'";
+                                                $mm=new db_mysql();
+                                                $mm->sql_comm($sqllll);
+                                                $tnamee=strtolower($tnamee);
+                                                $sqlllll = "DROP TABLE $tnamee";
+                                                $Mmm=new db_mysql();
+                                                $Mmm->sql_comm($sqlllll);
+                                                
+                                            }
+                                            else{
+                                                echo '
+                                                <form action="../code/test.php" method="post">
+                                                <div class="card mb-4">
+                                                    <div class="card-body bg-dark">
+                                                        <h4 class="card-title text-warning">Quiz <small class="text-danger">new </small></h4>
+    
+                                                        <h5 class="card-title">Class :- '.$row["testclass"].'</h5>
+                                                        <h5 class="card-title">Subject :- '.$row["subjectname"].' ('.$row['testname'] .')</h5>
+                                                        <h5 class="card-title">Expiry Date :-'.$row["testexpiry"].' </h5>
+                                                        <h6>Upload On :- <small class="mr-auto">'.$time.'</small></h6>
+                                                        </div>
+                                                        <input type="hidden" name="testname" value="'.$row["testname"].'">
+                                                        </div>
+                                                        </form>
+                                                        ';
+                                            }
+
+
+                                            
                                             }
                                                 // <button class="btn btn-info text-light font-weight-bold" type="submit">Check Out</button>
                                         
@@ -395,7 +420,7 @@ function time_elapsed_string($datetime, $full = false) {
             <div class="modal-content  rounded" style="border: 3px solid #EEE">
                 <div class="modal-header bg-dark">
 
-                    <h5>Candidate Registration</h5>
+                    <h5>Student Registration</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

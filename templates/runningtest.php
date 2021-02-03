@@ -97,10 +97,12 @@
                     <div class="sidenav">
                     <a href="../templates/admin.php">Admin</a>
                         <a href="../code/student.php">Students</a>
-                        <a href="../templates/runningtest.php">Running Test</a>
+                        <a style="color:yellowgreen;" href="../templates/runningtest.php">Running Test</a>
                         <a href="../code/attend.php">Attend Test</a>
                         <a href="../templates/addstaff.php">Add Staff</a>
                         <a href="../templates/staff.php">Staff</a>
+                        <a href="../code/astdresult.php">Result</a>    
+                        
                     </div>
 
 

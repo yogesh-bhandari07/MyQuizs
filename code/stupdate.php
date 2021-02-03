@@ -8,31 +8,37 @@ require 'database.php';
 
 
 $rsid=$_POST["register_student_rsid"];
-$stdname=$_POST["register_student_name"];
-$stdname=ucfirst($stdname);
-$stdfname=$_POST['register_student_fname'];
-$stdfname=ucfirst($stdfname);
+
+$facname=$_POST["register_student_name"];
+$facname=ucfirst($facname);
+
+$facfname=$_POST['register_student_fname'];
+$facfname=ucfirst($facfname);
+
 $enrollment=$_POST['register_student_enroll'];
 $enrollment=ucfirst($enrollment);
-$stddob=$_POST['register_student_dob'];
-$stdemail=$_POST["register_student_email"];
-$stdmob=$_POST["register_student_phone"];
+
+$facdob=$_POST['register_student_dob'];
+
+$facemail=$_POST["register_student_email"];
+
+$facmob=$_POST["register_student_phone"];
+
 $class=$_POST['register_student_class'];
 
-$stdname=str_replace("_"," ",$stdname);
+$facname=str_replace(" ","_",$facname);
 
-$filename   = $stdname . "-" . time(); 
+$filename   = $facname . "-" . time(); 
 $extension  = pathinfo( $_FILES["file"]["name"], PATHINFO_EXTENSION ); // jpg
 $basename   = $filename . "." . $extension; // 5dab1961e93a7_1571494241.jpg
 
 $source       = $_FILES["file"]["tmp_name"];
-$destination  = "C:/xampp/htdocs/quizs/imgs/userpic/{$basename}";
+$destination  = "C:/xampp/htdocs/quizs/imgs/facimg/{$basename}";
 $upic=$basename;
-$stdname=str_replace(" ","_",$stdname);
 
 
-
-$sql="UPDATE users SET stdname='$stdname',stdfname='$stdfname',enrollment='$enrollment',stdemail='$stdemail',stdmob='$stdmob',stdclass='$class',stddob='$stddob',stdimg='$upic' WHERE rsid='$rsid'";
+$facname=str_replace("_"," ",$facname);
+$sql="UPDATE staff SET facname='$facname',facfname='$facfname',facaddn='$enrollment',facemail='$facemail',facmob='$facmob',facsub='$class',facdob='$facdob',facimg='$upic' WHERE facrsid='$rsid'";
 
 
 
