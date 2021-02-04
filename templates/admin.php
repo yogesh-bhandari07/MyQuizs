@@ -17,7 +17,7 @@
     <div class="container-fluid p-0 m-0">
         <div class="header">
             <div class="col-sm-12 text-center">
-                <h1 class="pt-4">Welcome To Admin Zone</h1>
+                <h1 class="pt-4">Wecome To MyQuiz</h1>
             </div>
         </div>
 
@@ -102,13 +102,26 @@
             <div class="row p-0 m-0">
                 <div class="col-sm-2 p-1">
                     <div class="sidenav">
-                        <a style="color:yellowgreen;" href="../templates/admin.php">Admin</a>
-                        <a href="../code/student.php">Students</a>
-                        <a href="../templates/runningtest.php">Running Test</a>
-                        <a href="../code/attend.php">Attend Test</a>
-                        <a href="../templates/addstaff.php">Add Staff</a>
-                        <a href="../templates/staff.php">Staff</a>
-                        <a href="../code/astdresult.php">Result</a>    
+                        <?php
+
+                        if(isset($_SESSION['facname'])){
+                            echo'<a style="color:yellowgreen;" href="../templates/faczone.php">Make Test</a>
+                            <a href="../code/student.php">Students</a>
+                            <a href="../templates/runningtest.php">Running Test</a>
+                            <a href="../code/attend.php">Attend Test</a>
+                            <a href="../code/astdresult.php">Result</a>   ';
+                        }
+                        else{
+                            echo'<a style="color:yellowgreen;" href="../templates/admin.php">Admin</a>
+                            <a href="../code/student.php">Students</a>
+                            <a href="../templates/runningtest.php">Running Test</a>
+                            <a href="../code/attend.php">Attend Test</a>
+                            <a href="../templates/addstaff.php">Add Staff</a>
+                            <a href="../templates/staff.php">Staff</a>
+                            <a href="../code/astdresult.php">Result</a>    ';
+                        }
+                        ?>
+                        
                         
                     </div>
 
@@ -122,10 +135,27 @@
                     <form action="../code/mtable.php" method="post">
                         <div class="row pt-4 m-0">
                             <div class="col-sm-6">
-                                <label for="tsubject">Subject</label>
-                                <input type="text" name="tsubject" id="tsubject" required class="form-control" placeholder="Subject">
-                                <label for="tename">Teacher Name</label>
-                                <input type="text" name="tename" id="tename" required class="form-control" placeholder="Teacher Name">
+                                <?php
+                                if(isset($_SESSION['facname'])){
+                                   echo '<label for="tsubject">Subject</label>
+                                    <input type="text" name="tsubject" value="'.$_SESSION['facsub'].'" id="tsubject" required class="form-control" placeholder="Subject" readonly>';    
+                                }
+                                else{
+                                    echo'<label for="tsubject">Subject</label>
+                                    <input type="text" name="tsubject" id="tsubject" required class="form-control" placeholder="Subject">';
+                                }
+                                ?>
+                                <?php
+                                if(isset($_SESSION['facname'])){
+                                    echo'<label for="tename">Teacher Name</label>
+                                    <input type="text" value="'.$_SESSION['facname'].'" name="tename" id="tename" required class="form-control" placeholder="Teacher Name" readonly>';    
+                                }
+                                else{
+                                    echo'<label for="tename">Teacher Name</label>
+                                    <input type="text" name="tename" id="tename" required class="form-control" placeholder="Teacher Name">';
+                                }
+                                ?>
+                                
                                 <label for="texdate">Expiry Date</label>
                                 <input type="date" name="texdate" id="texdate" required class="form-control">
                                 <label for="noq">Number Questions</label>

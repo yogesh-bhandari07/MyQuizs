@@ -4,6 +4,6 @@ if(isset($_SESSION["username"]))
 {
 	session_destroy();
 	
-	echo "<script>alert('Logout');window.location.href='../templates/index.php'</script>";
+	echo "<script>window.location.href='../templates/index.php'</script>";
 }
 ?>

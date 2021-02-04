@@ -17,7 +17,7 @@
     <div class="container-fluid p-0 m-0">
         <div class="header">
             <div class="col-sm-12 text-center">
-                <h1 class="pt-4">Welcome To Admin Zone</h1>
+                <h1 class="pt-4">Wecome To MyQuiz</h1>
             </div>
         </div>
         <div class="menu">
@@ -95,13 +95,25 @@
             <div class="row p-0 m-0">
                 <div class="col-sm-2 p-1">
                     <div class="sidenav">
-                    <a href="../templates/admin.php">Admin</a>
-                        <a href="../code/student.php">Students</a>
-                        <a style="color:yellowgreen;" href="../templates/runningtest.php">Running Test</a>
-                        <a href="../code/attend.php">Attend Test</a>
-                        <a href="../templates/addstaff.php">Add Staff</a>
-                        <a href="../templates/staff.php">Staff</a>
-                        <a href="../code/astdresult.php">Result</a>    
+                        <?php
+                    if(isset($_SESSION['facname'])){
+                            echo'<a  href="../templates/faczone.php">Make Test</a>
+                            <a href="../code/student.php">Students</a>
+                            <a style="color:yellowgreen;" href="../templates/runningtest.php">Running Test</a>
+                            <a href="../code/attend.php">Attend Test</a>
+                            <a href="../code/astdresult.php">Result</a>   ';
+                        }
+                        else{
+                            echo'<a  href="../templates/admin.php">Admin</a>
+                            <a href="../code/student.php">Students</a>
+                            <a style="color:yellowgreen;" href="../templates/runningtest.php">Running Test</a>
+                            <a href="../code/attend.php">Attend Test</a>
+                            <a href="../templates/addstaff.php">Add Staff</a>
+                            <a href="../templates/staff.php">Staff</a>
+                            <a href="../code/astdresult.php">Result</a>    ';
+                        }
+                        ?>
+                        
                         
                     </div>
 
@@ -172,8 +184,14 @@ function time_elapsed_string($datetime, $full = false) {
                                     if ($con->connect_error) {
                                         die("Connection failed: " . $con->connect_error);
                                     }
+                                    if(isset($_SESSION['facname'])){
+                                        $fname=$_SESSION['facname'];
+                                        $sql = "SELECT * FROM runningtest WHERE teachername='$fname'";    
+                                    }
+                                    else{
+                                        $sql = "SELECT * FROM runningtest";
+                                    }
                                     
-                                    $sql = "SELECT * FROM runningtest";
                                     $result = $con->query($sql);
                                     if ($result->num_rows > 0) {
                                         

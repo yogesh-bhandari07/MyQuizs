@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="icon" type="image/png" sizes="32x32" href="../imgs/webfav.png">
 </head>
@@ -48,6 +50,14 @@
                                     <a class="nav-link" href="../templates/admin.php">Admin Zone</a>
                                 </li>';
                             }
+                           else if(isset($_SESSION['facname'])){
+
+                                echo'
+                            <li class="nav-item active">
+                                <a class="nav-link" href="../templates/admin.php">Teacher Zone</a>
+                            </li>';
+                        }
+
                             else  if(isset($_SESSION['username'])){
                                 echo'
                                 <li class="nav-item active">
@@ -318,7 +328,29 @@ function time_elapsed_string($datetime, $full = false) {
 
 
 
+
+
+    
         </div>
+        
+
+
+
+<div id="footer">
+
+    <div class="social-menu text-center">
+        
+        <ul>
+          <li><a href="https://www.facebook.com/profile.php?id=100014268963057"><i class="fa fa-facebook"></i></a></li>
+          <li><a href=""><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://www.instagram.com/mr__boss_official/"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCGQjr8vFceUa__7K8mMB9_Q"><i class="fa fa-youtube"></i></a></li>
+          <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+        <h3 style="@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap'); font-family: 'Sriracha', cursive;">OSCAR FORD</h3>
+        <h4 style="@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap'); font-family: 'Sriracha', cursive;">Where Creativity begins And The Visions are beyond.</h4>
+      </div>
+</div>
 
 
 
@@ -345,6 +377,8 @@ function time_elapsed_string($datetime, $full = false) {
 
 
         <!-- end -->
+
+
 
 
 
